@@ -5,24 +5,16 @@ import {useState} from 'react'
 
 function App() {
 
-  const [bgColor, setBgColor] = useState({
-    currentColor:'red',
-    toChange:'blue'
-  })
+  const [bgColor, setBgColor] = useState('red');
+  const toChangeColor = bgColor === 'red' ? 'blue' : 'red'
 
   const updateButton = () => {
-
-    const temp = bgColor.currentColor
-    setBgColor({
-      currentColor: bgColor.toChange,
-      toChange: temp
-    })
-
+    setBgColor(toChangeColor)
   }
 
   return (
     <div className="">
-      <button style={{backgroundColor:bgColor.currentColor}} onClick={updateButton}>Change to {bgColor.toChange}</button>
+      <button style={{backgroundColor:bgColor}} onClick={updateButton}>Change to {toChangeColor}</button>
     </div>
   );
 }
