@@ -1,18 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {useState} from 'react'
+
 function App() {
 
-  const changeStyle = (event) => {
-    const element = document.querySelector('button')
-    // event.target.style.backgroundColor = 'blue'
-    element.style.backgroundColor = 'blue'
-    element.innerHTML = 'Change to red'
+  const [bgColor, setBgColor] = useState({
+    currentColor:'red',
+    toChange:'blue'
+  })
+
+  const updateButton = () => {
+
+    const temp = bgColor.currentColor
+    setBgColor({
+      currentColor: bgColor.toChange,
+      toChange: temp
+    })
+
   }
 
   return (
     <div className="">
-      <button style={{backgroundColor:'red'}} onClick={changeStyle}>Change to blue</button>
+      <button style={{backgroundColor:bgColor.currentColor}} onClick={updateButton}>Change to {bgColor.toChange}</button>
     </div>
   );
 }
