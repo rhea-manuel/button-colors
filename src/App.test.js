@@ -5,24 +5,24 @@ test('button has correct initial color', () => {
   render(<App/>);
 
   // find an element with role of button and text of 'change to blue'
-  const button = screen.getByRole('button', {name: /change to blue/i});
-  expect(button).toHaveStyle({backgroundColor:'red'})
+  const button = screen.getByRole('button', {name: /change to midnight blue/i});
+  expect(button).toHaveStyle({backgroundColor:'MediumVioletRed'})
 
   // click button
   fireEvent.click(button);
 
   // expect the background color to be blue
-  expect(button).toHaveStyle({backgroundColor: 'blue'});
+  expect(button).toHaveStyle({backgroundColor: 'MidnightBlue'});
 
   // make sure the button text has changed as well
-  expect(button.textContent).toBe('Change to red');
+  expect(button.textContent).toBe('Change to Medium Violet Red');
 
 });
 
 test('initial conditions', () => {
   render(<App/>);
   // button should start enabled 
-  const button = screen.getByRole('button', {name: /change to blue/i});
+  const button = screen.getByRole('button', {name: /change to midnight blue/i});
   expect(button).toBeEnabled();
   
   //  checkbox should start unchecked
@@ -47,7 +47,7 @@ test ('checkbox enabled/disabled working', ()=> {
 
 test('button becomes gray when disabled', ()=>{
   render(<App/>)
-  const button = screen.getByRole('button', {name:/change to blue/i});
+  const button = screen.getByRole('button', {name:/change to midnight blue/i});
   const checkbox = screen.getByRole('checkbox', {name: 'Disable button'});
 
   // Disable button
@@ -56,7 +56,7 @@ test('button becomes gray when disabled', ()=>{
 
   // Enable button 
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({backgroundColor: 'red'});
+  expect(button).toHaveStyle({backgroundColor: 'MediumVioletRed'});
 
   // Click button and change it to blue
   fireEvent.click(button);
@@ -67,7 +67,7 @@ test('button becomes gray when disabled', ()=>{
 
   // Enable button—make sure it is still blue
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({backgroundColor: 'blue'});
+  expect(button).toHaveStyle({backgroundColor: 'MidnightBlue'});
 
 })
 
